@@ -8,11 +8,11 @@
 </head>
 <body>
     {% extends 'base.html' %}
-
+    {% load markdown_extras %}
     {% block content %}
     <h1>Test header</h1>
 
-    {% for post in all_post_list %}
+    {% for post in all_posts_list %}
     <div>
         <h2>{{ post.title }}</h2>
         <p>{{ post.body | markdown | safe }}</p>
