@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     # third party apps
     'markdownx',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -144,7 +145,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MARKDOWNX_MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.codehilite']
 
-
+TAGGIT_CASE_INSENSITIVE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
