@@ -8,14 +8,13 @@
 </head>
 <body>
     {% extends 'base.html' %}
-    {% load markdownify %}
     {% block content %}
     <h1>Test header</h1>
 
     {% for post in all_posts_list %}
     <div>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.body|markdownify }}</p>
+        <p>{{ post.formatted_markdown|safe }}</p>
     </div>
     <hr>
     {% endfor %}

@@ -16,6 +16,10 @@ class Post(models.Model):
     body = MarkdownxField()
     status = models.IntegerField(choices=STATUS, default=0)
 
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.body)
+
     def __str__(self):
         return self.title
     
