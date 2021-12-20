@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,17 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-    {% extends 'base.html' %}
     {% block content %}
     <h1>Test header</h1>
 
     {% for post in all_posts_list %}
     <div>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.formatted_markdown|safe }}</p>
+        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.created }}</p>
+        <p>{{ post.formatted_markdown_summary|safe }}</p>
     </div>
-    <hr>
     {% endfor %}
+
     {% endblock content %}
 
     
