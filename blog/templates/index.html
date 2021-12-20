@@ -13,7 +13,7 @@
 
     {% for post in all_posts_list %}
     <div>
-        <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
         <p>{{ post.created }}</p>
         <p>{{ post.formatted_markdown_summary|safe }}</p>
     </div>
