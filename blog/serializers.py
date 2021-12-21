@@ -9,5 +9,15 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username']
 
-        
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            'title', 
+            'created', 
+            'updated', 
+            'status', 
+            'tags'
+            ]
 
