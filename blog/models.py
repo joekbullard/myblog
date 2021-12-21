@@ -4,7 +4,7 @@ from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from taggit.managers import TaggableManager
-from slugify import slugify
+from django_extensions.db.fields import AutoSlugField
 
 STATUS = (
     (0, "Draft"),
@@ -12,9 +12,9 @@ STATUS = (
 )
 
 class Post(models.Model):
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=250, unique=True, null=False)
     owner = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
-    slug = models.SlugField(null=False, default=slugify(str(title)), unique=True, max_length=250)
+    slug = AutoSlugField(populate_from='title')
     post_image = models.ImageField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
