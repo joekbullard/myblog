@@ -2,7 +2,7 @@
 
 ## Built using Django web framework
 
-Currently visible on [heroku](https://stormy-lowlands-57369.herokuapp.com/subdivide-and-conquer)
+Currently visible on [heroku](https://joekbullard.herokuapp.com/)
 
 ### Features
 * standard django admin controls
