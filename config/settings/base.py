@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     # third party apps
     'markdownx',
     'taggit',
+    'rest_framework',
+    'taggit_serializer',
 ]
 
 MIDDLEWARE = [

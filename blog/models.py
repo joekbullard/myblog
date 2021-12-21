@@ -25,8 +25,12 @@ class Post(models.Model):
     def formatted_markdown(self):
         return markdownify(self.body)
 
+    @property
     def formatted_markdown_summary(self):
         return markdownify(self.body[:200] + "...")
+
+    def word_count(self):
+        return len(self.body.split(' '))
 
     def __str__(self):
         return self.title
