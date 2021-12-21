@@ -15,11 +15,12 @@ class UserSerializer(serializers.ModelSerializer):
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
 
     tags = TagListSerializerField()
-    
+
     class Meta:
         model = Post
         fields = [
             'title', 
+            'body',
             'created', 
             'updated', 
             'status',

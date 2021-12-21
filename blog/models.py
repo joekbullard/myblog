@@ -13,6 +13,7 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField(max_length=250)
+    owner = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
     slug = models.SlugField(null=False, default=slugify(str(title)), unique=True, max_length=250)
     post_image = models.ImageField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
