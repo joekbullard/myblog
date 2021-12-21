@@ -1,8 +1,9 @@
-from rest_framework import generics
-from . import serializers
+from rest_framework import generics, permissions
+import serializers
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 from .models import Post
+from .permissions import IsOwnerOrReadOnly
 
 class IndexPageView(ListView):
     model = Post
