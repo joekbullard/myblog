@@ -5,15 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe K Bullard</title>
+    <title>Joe k Bullard</title>
 </head>
 <body>
     {% block content %}
-    <h1>Joe k Bullard</h1>
+    <h1>Joe K Bullard</h1>
 
     {% for post in all_posts_list %}
     <div>
-        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        {% for tag in post.tags.all %}
+            <li class="tags"> {{ tag.name }} </li>
+        {% endfor %}
         <p>{{ post.created }}</p>
         <p>{{ post.formatted_markdown_summary|safe }}</p>
     </div>
