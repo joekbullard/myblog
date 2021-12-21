@@ -7,19 +7,24 @@ from taggit_serializer.serializers import (TagListSerializerField,
 
 # inherit from ModelSerializer class
 class UserSerializer(serializers.ModelSerializer):
+    posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    
     class Meta:
         model = User
-        fields = ['id', 'username']
+        fields = ['id', 'username', 'posts']
 
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     tags = TagListSerializerField()
 
     class Meta:
         model = Post
         fields = [
-            'title', 
+            'id',
+            'title',
+            'owner',
             'body',
             'created', 
             'updated', 

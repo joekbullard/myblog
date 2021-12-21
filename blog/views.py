@@ -20,11 +20,15 @@ class AboutPageView(TemplateView):
 # API Views
 # View names should be in the following form: 
 # {ModelName}List and {ModelName}Detail for a list of objects and a single object, respectively.
-class PostList(generics.ListAPIView):
+class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
 
-class PostDetail(generics.RetrieveAPIView):
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
 
