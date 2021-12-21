@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-import serializers
+from . import serializers
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 from .models import Post
@@ -24,6 +24,7 @@ class AboutPageView(TemplateView):
 class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -32,6 +33,8 @@ class PostList(generics.ListCreateAPIView):
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly]
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
