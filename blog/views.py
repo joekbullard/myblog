@@ -16,6 +16,8 @@ class BlogDetailView(DetailView):
 class AboutPageView(TemplateView):
     template_name = 'about.html'
 
+
+# API Views
 # View names should be in the following form: 
 # {ModelName}List and {ModelName}Detail for a list of objects and a single object, respectively.
 class PostList(generics.ListAPIView):
