@@ -1,4 +1,7 @@
+from rest_framework import generics
+from . import serializers
 from django.views.generic import TemplateView, ListView, DetailView
+from django.contrib.auth.models import User
 from .models import Post
 
 class IndexPageView(ListView):
@@ -12,3 +15,21 @@ class BlogDetailView(DetailView):
 
 class AboutPageView(TemplateView):
     template_name = 'about.html'
+
+# View names should be in the following form: 
+# {ModelName}List and {ModelName}Detail for a list of objects and a single object, respectively.
+class PostList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = serializers.PostSerializer
+
+class PostDetail(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = serializers.PostSerializer
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer

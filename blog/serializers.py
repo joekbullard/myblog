@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
             'title', 
             'created', 
             'updated', 
-            'status', 
+            'status',
             'tags'
             ]
 
