@@ -9,13 +9,13 @@
 </head>
 <body>
     
-    
+    <div class="container">
     {% block content %}
-      <div>
+      
           <h1>{{ post.title }}</h1>
-          <p>{{ post.formatted_markdown|safe }}</p>
-      </div>
 
+          <p>{{ post.formatted_markdown|safe }}</p>
       {% endblock content %}
+      </div>
 </body>
 </html>

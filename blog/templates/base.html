@@ -10,17 +10,24 @@
     <title>Django template</title>
 </head>
 <body>
-    <header class="header">
-        <a class="logo" href="{% url 'index' %}">Home</a>
-        <nav>
-            <a href="https://github.com/joekbullard">Github</a> 
-            <a href="{% url 'about' %}">About</a> 
-        </nav>      
-    </header>
-
-    {% block content %}
-    {% endblock content %}
-
+    <div class="wrapper">
+        <header class="header">
+            <a class="logo" href="{% url 'index' %}">Home</a>
+            <nav>
+                <a href="https://github.com/joekbullard">Github</a> 
+                <a href="{% url 'about' %}">About</a> 
+            </nav>      
+        </header>
+        {% block content %}
+        {% endblock content %}
+        <footer class="page-footer">
+        <hr class="footnotes-separatator">
+        <p class="subtitle">
+            &copy; 2021 &middot; 
+            <a href="https://github.com/joekbullard/">Joe K Bullard</a>
+        </p>
+        </footer>
+    </div>
 </body>
 
 </html>

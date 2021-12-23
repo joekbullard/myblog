@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
  }
+ 
 
 html {
     overflow-y: scroll;
@@ -191,4 +192,9 @@ header a + a {
     vertical-align: middle;
     padding-right: 2rem;
     color: grey;
+}
+
+body > .footer {
+    position: sticky;
+    top: 100vh;
 }
