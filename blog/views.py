@@ -1,14 +1,25 @@
+from django.db.models.query import QuerySet
 from rest_framework import generics, permissions
 from . import serializers
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
 from .models import Post
 from .permissions import IsOwnerOrReadOnly
+from taggit.models import Tag
 
 class IndexPageView(ListView):
     model = Post
     template_name = 'index.html'
-    context_object_name = 'all_posts_list'
+    queryset = Post.objects.all()
+    context_object_name = 'posts'
+
+class TagPageView(ListView):
+    model = Post
+    template_name = 'index.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs.get('tag_slug'))
 
 class BlogDetailView(DetailView):
     model = Post

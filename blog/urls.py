@@ -19,4 +19,5 @@ urlpatterns = [
     path('about/', AboutPageView.as_view(), name='about'),
     path('api/', include(api_urlpatterns)),
     path('', IndexPageView.as_view(), name='index'),
+    path('tag/<slug:tag_slug>', TagPageView.as_view(), name='index_by_tag')
 ]
