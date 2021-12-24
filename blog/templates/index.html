@@ -11,13 +11,16 @@
     <div class="container">
     {% block content %}
     <h1 class="title">Joe K Bullard</h1>
-    <p>Thoughts and ramblings on geospatial, python and postgres.</p>
+    <p>Thoughts and ramblings on geospatial, python and postgres</p>
     {% for post in all_posts_list %}
     <ul class="posts">
     <li class="post">
         <a href="{{ post.get_absolute_url }}">
             <date>{{ post.created }}</date>
             <span>{{ post.title }}</span>
+            {% for tag in post.tags.all %}
+                <p>{{tag}}</p>
+            {% endfor %}
         </a>
     </li>
     </ul>
