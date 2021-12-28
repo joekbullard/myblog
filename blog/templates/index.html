@@ -8,7 +8,7 @@
     <title>Joe k Bullard</title>
 </head>
 <body>
-    <div class="container">
+    <main>
     {% block content %}
     <h1 class="title">Joe K Bullard</h1>
     <p>Thoughts and ramblings on geospatial, python and postgres related bits and bobs</p>
@@ -16,16 +16,13 @@
     <ul class="posts">
     <li class="post">
         <a href="{{ post.get_absolute_url }}">
-            <date>{{ post.created }}</date>
+            <date class="date">{{ post.formatted_date }}</date>
             <span>{{ post.title }}</span>
         </a>  
     </li>
     </ul>
     {% endfor %}
-    
-
     {% endblock content %}
-
-</div>
+    </main>
 </body>
 </html>

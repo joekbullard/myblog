@@ -17,7 +17,7 @@ import os
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False),
+    DEBUG=(str, False),
     SECRET_KEY=(str),
     AWS_ACCESS_KEY_ID=(str),
     USE_S3=(str, 'TRUE'),
@@ -148,7 +148,7 @@ USE_TZ = True
 
 # NEW
 
-USE_S3 = True
+USE_S3 = env('USE_S3') == 'TRUE'
 
 if USE_S3:
     # aws settings

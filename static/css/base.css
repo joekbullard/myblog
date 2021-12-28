@@ -11,10 +11,16 @@
 html {
     overflow-y: scroll;
     height: 100%;
-    font: 100%/1.5 sans-serif;
+    font: 100%/1.5;
+    font-family: 'Roboto', sans-serif;
     word-wrap: break-word;
     margin: 0 auto;
     padding: 1.5em;
+    font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: 1.6em;
+    font-weight: 300;
+    letter-spacing: .01em;
+    line-height: 1.6;
  }
 
 @media (min-width: 768px) {
@@ -41,11 +47,29 @@ p {
     margin: 1em 0;
     line-height: 1.5;
  }
-p code {
-    background-color: #eee;
-    padding: 0.05em 0.2em;
-    border: 1px solid #ccc;
- }
+
+
+ code {
+    background: #f4f5f6;
+    border-radius: .4rem;
+    font-size: 90%;
+    margin: 0 .2rem;
+    padding: .2rem .5rem;
+    white-space: nowrap;
+  }
+  
+  pre {
+    background: #f4f5f6;
+    border-left: 0.3rem solid #059bcd;
+    overflow-y: hidden;
+  }
+  
+  pre > code {
+    border-radius: 0;
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+  }
 
 ol, ul {
     margin: 1em;
@@ -188,7 +212,6 @@ header a + a {
 }
 .posts .post date {
     font-family: monospace, monospace;
-    font-size: 0.8rem;
     vertical-align: middle;
     padding-right: 2rem;
     color: grey;

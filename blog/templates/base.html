@@ -4,28 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joe K Bullard</title>
 </head>
 <body>
         <header class="header">
             <a class="logo" href="{% url 'index' %}">Home</a>
             <nav>
-                <a href="https://github.com/joekbullard">Github</a> 
+                <a href="https://github.com/joekbullard">Github</a>
                 <a href="{% url 'about' %}">About</a> 
             </nav>      
         </header>
-        {% block content %}
-        {% endblock content %}
-        <footer class="page-footer">
-        <hr class="footnotes-separatator">
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+            <footer>
         <p class="subtitle">
-            &copy; 2021 &middot; 
+            &copy; 2021 &middot;
             <a href="https://github.com/joekbullard/">Joe K Bullard</a>
         </p>
         </footer>
+       
 </body>
 
 </html>

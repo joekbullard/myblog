@@ -1,8 +1,10 @@
 from django.db.models.query import QuerySet
 from rest_framework import generics, permissions
 from . import serializers
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView, DetailView
 from django.contrib.auth.models import User
+from .forms import CommentForm
 from .models import Post
 from .permissions import IsOwnerOrReadOnly
 from taggit.models import Tag
@@ -54,3 +56,18 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
+
+'''
+def add_comment_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.slug)
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment_to_post.html', {'form': form})
+'''

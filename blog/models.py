@@ -5,6 +5,7 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from taggit.managers import TaggableManager
 from django_extensions.db.fields import AutoSlugField
+from datetime import date
 
 STATUS = (
     (0, "Draft"),
@@ -33,6 +34,9 @@ class Post(models.Model):
     def word_count(self):
         return len(self.body.split(' '))
 
+    def formatted_date(self):
+        return self.created.date().strftime('%d %b %Y')
+
     def __str__(self):
         return self.title
 
@@ -43,5 +47,28 @@ class Post(models.Model):
         ordering = ['-created']
         verbose_name_plural = "posts"
     
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        'Post', 
+        on_delete=models.CASCADE, 
+        related_name='comments',
+        )
+    user = models.CharField(null=False, max_length=30)
+    comment_text = MarkdownxField()
+    created = models.DateTimeField(auto_now_add=True)
     
-    
+
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.comment_text)
+
+    def __str__(self):
+        return self.comment_text
+
+    class Meta:
+        ordering = ['-created']
+        verbose_name_plural = "comments"
+
+    def get_absolute_url(self):
+        return reverse('index')
