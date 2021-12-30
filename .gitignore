@@ -7,3 +7,6 @@ mediafiles/
 .env
 staticfiles/
 .DS_Store
+.env.dev
+.env.prod
+.env.prod.db
