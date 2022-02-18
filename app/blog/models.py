@@ -12,6 +12,7 @@ STATUS = (
     (1, "Publish")
 )
 
+
 class Post(models.Model):
     title = models.CharField(max_length=250, unique=True, null=False)
     owner = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
@@ -41,23 +42,22 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'slug': self.slug}) # new
-    
+        return reverse('post_detail', kwargs={'slug': self.slug})
+
     class Meta:
         ordering = ['-created']
         verbose_name_plural = "posts"
-    
+
 
 class Comment(models.Model):
     post = models.ForeignKey(
-        'Post', 
-        on_delete=models.CASCADE, 
+        'Post',
+        on_delete=models.CASCADE,
         related_name='comments',
-        )
+    )
     user = models.CharField(null=False, max_length=30)
     comment_text = MarkdownxField()
     created = models.DateTimeField(auto_now_add=True)
-    
 
     @property
     def formatted_markdown(self):
@@ -72,4 +72,3 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse('index')
-
