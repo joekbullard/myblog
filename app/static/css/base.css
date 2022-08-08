@@ -17,8 +17,12 @@ html {
     color: #c9c9c9;
     background-color: #222222;
     padding: 13px;
-    text-align: justify;
+    text-align: left;
      }
+     
+  body h1 {
+    text-align: left;
+  }
   
   @media (max-width: 684px) {
     body {

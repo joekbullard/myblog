@@ -5,10 +5,11 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile.prod
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8888
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8888 --reload
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
+      - .:/code
     expose:
       - 8888
     env_file:
@@ -43,6 +44,8 @@ services:
       - acme:/etc/acme.sh
     depends_on:
       - nginx-proxy
+    restart:
+      - always
 
 volumes:
   static_volume:
