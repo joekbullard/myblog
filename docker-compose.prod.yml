@@ -16,10 +16,11 @@ services:
       - ./.env.prod
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    restart: unless-stopped
   nginx-proxy:
     container_name: nginx-proxy
     build: nginx
-    restart: always
+    restart: unless-stopped
     ports:
       - 443:443
       - 80:80
@@ -44,8 +45,7 @@ services:
       - acme:/etc/acme.sh
     depends_on:
       - nginx-proxy
-    restart:
-      - always
+    restart: unless-stopped
 
 volumes:
   static_volume:
